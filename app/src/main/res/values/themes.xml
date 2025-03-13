@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources>
+    <style name="Theme.App" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="colorPrimary">@color/accent_900</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/accent_100</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorAccent">@color/accent_900</item>
+        <item name="android:windowAnimationStyle">@style/Theme.Anim.Material</item>
+        <item name="android:statusBarColor">@color/window_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/window_background</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:windowSplashScreenBackground">@color/window_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_splash</item>
+        <item name="android:windowSplashScreenAnimationDuration">2400</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/transparent</item>
+    </style>
+
+    <style name="Theme.Anim.Material" parent="@style/Theme.Material3.DayNight.NoActionBar">
+        <item name="android:activityOpenEnterAnimation">@anim/mtrl_activity_open_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/mtrl_activity_open_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/mtrl_activity_close_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/mtrl_activity_close_exit</item>
+    </style>
+</resources>

@@ -1,0 +1,23 @@
+
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+d
+4app/src/main/java/org/teslasoft/core/CrashHandler.kt,5\e\5e3eef9496e0832bace4c68cd0159527f45f3c66
+D
+app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
+I
+gradle/libs.versions.toml,d\7\d7595319a0658be6f1ed500ad590d42e4b28bc4f
+n
+>app/src/main/java/org/teslasoft/android/pchips/MainActivity.kt,5\9\59558a4913ca3abd7e436db776c89cb7a32af244
+q
+Aapp/src/main/java/org/teslasoft/android/pchips/AccentsActivity.kt,d\d\ddc98ef31d80587fd80ac16157623a95cd98a168
+r
+Bapp/src/main/java/org/teslasoft/android/pchips/SurfacesActivity.kt,4\5\45d9b93858741bc74531a3fad2246a52052561ad
+F
+app/proguard-rules.pro,9\e\9e08934d811afe28fbc77aaa3c0d747b94348db9
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
+A
+gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
+@
+local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources>
+    <!-- Static colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black_shadowed">#AA000000</color>
+    <color name="white_shadowed">#AAFFFFFF</color>
+    <color name="black_ripple">#20000000</color>
+    <color name="white_ripple">#20FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorPrimary">@android:color/system_accent1_600</color>
+    <color name="colorTertiary">@android:color/system_accent3_200</color>
+    <color name="colorOnTertiary">@android:color/system_accent3_600</color>
+
+    <!-- Dynamic colors -->
+    <color name="accent_100">@android:color/system_neutral2_50</color>
+    <color name="accent_200">@android:color/system_neutral2_100</color>
+    <color name="accent_900">@android:color/system_accent1_800</color>
+    <color name="window_background">@android:color/system_neutral1_10</color>
+    <color name="success">#136005</color>
+    <color name="tip">#201C5500</color>
+    <color name="text_title">@color/black</color>
+    <color name="text">@color/black_shadowed</color>
+    <color name="ripple">@color/black_ripple</color>
+</resources>
