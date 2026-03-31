@@ -1,5 +1,5 @@
 /**************************************************************************
- * Copyright (c) 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+ * Copyright (c) 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,12 @@
 package org.teslasoft.android.pchips.ui
 
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
+import androidx.activity.enableEdgeToEdge
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -44,11 +48,27 @@ class MainActivity : FragmentActivity() {
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.VANILLA_ICE_CREAM) {
             window?.statusBarColor = SurfaceColors.SURFACE_0.getColor(this)
             window?.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
+        }
+
+        val rootView = findViewById<View>(android.R.id.content)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, insets ->
+            val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
+
+            if (!imeVisible) {
+                accentPaletteFragment?.initView()
+                surfacePaletteFragment?.initView()
+            } else {
+                accentPaletteFragment?.initView()
+                surfacePaletteFragment?.initView()
+            }
+
+            insets
         }
 
         initViews()
@@ -89,6 +109,9 @@ class MainActivity : FragmentActivity() {
             prevTab = savedInstanceState.getInt("nextTab")
 
             updateTab()
+
+            accentPaletteFragment?.initView()
+            surfacePaletteFragment?.initView()
         }
     }
 
@@ -98,10 +121,8 @@ class MainActivity : FragmentActivity() {
     }
 
     private fun initViews() {
-        try {
-            if (bottomNavigationView == null) bottomNavigationView = findViewById(R.id.bottom_navigation)
-            if (windowContainer == null) windowContainer = findViewById(R.id.window)
-        } catch (_: NullPointerException) { /* ignored */ }
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+        windowContainer = findViewById(R.id.window)
 
         bottomNavigationView?.setBackgroundColor(SurfaceColors.SURFACE_2.getColor(this))
         windowContainer?.setBackgroundColor(SurfaceColors.SURFACE_0.getColor(this))
@@ -135,12 +156,14 @@ class MainActivity : FragmentActivity() {
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+        reload()
+    }
 
+    private fun reload() {
         initViews()
         initFragments()
 
         val statusBarHeight = window.decorView.rootWindowInsets.getInsets(WindowInsets.Type.statusBars()).top
-        val navigationBarHeight = window.decorView.rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.VANILLA_ICE_CREAM) {
             // Handle Android 15 edge-to-edge mode
@@ -149,15 +172,15 @@ class MainActivity : FragmentActivity() {
 
         updateTab()
 
-        accentPaletteFragment?.initView(statusBarHeight, navigationBarHeight)
-        surfacePaletteFragment?.initView(statusBarHeight, navigationBarHeight)
+        accentPaletteFragment?.initView()
+        surfacePaletteFragment?.initView()
     }
 
     private fun updateTab() {
         when (nextTab) {
             0 -> {
                 bottomNavigationView?.selectedItemId = R.id.menu_accent_palette
-                loadFragment(accentPaletteFragment!!, prevTab, nextTab)
+                loadFragment(accentPaletteFragment ?: return, prevTab, nextTab)
             }
 
             1 -> {

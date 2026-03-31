@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /*
-** Copyright 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+** Copyright 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@
 	android:shape="rectangle">
 
 	<corners
-		android:topLeftRadius="8dp"
-		android:topRightRadius="8dp"
+		android:topLeftRadius="4dp"
+		android:topRightRadius="4dp"
 		android:bottomRightRadius="24dp"
 		android:bottomLeftRadius="24dp"/>
 

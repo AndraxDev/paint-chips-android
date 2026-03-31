@@ -1,5 +1,5 @@
 /**************************************************************************
- * Copyright (c) 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+ * Copyright (c) 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import com.google.android.material.button.MaterialButton
 
 import org.teslasoft.android.pchips.R
 
-/** This activity will be opened if app os crashed. */
+/** This activity will be opened if app has crashed. */
 class CrashHandlerActivity : FragmentActivity() {
 
     private var error: String? = null

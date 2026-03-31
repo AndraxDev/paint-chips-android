@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+** Copyright 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/text_title"
         android:textSize="24sp"
@@ -44,9 +45,9 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/tip"
-        android:padding="24dp"
+        android:padding="20dp"
         android:text="@string/app_description"
-        android:textColor="@color/success"
+        android:textColor="@color/accent_100"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,13 +57,13 @@
         android:id="@+id/app_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="2dp"
         android:text="@string/version"
         android:textColor="@color/text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carousel" />
+        app:layout_constraintTop_toBottomOf="@+id/app_dev" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/carousel"
@@ -71,8 +72,21 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:overScrollMode="never"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_description" />
+
+    <TextView
+        android:id="@+id/app_dev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Developer: AndraxDev"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carousel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

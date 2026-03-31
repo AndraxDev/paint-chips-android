@@ -1,5 +1,5 @@
 /**************************************************************************
- * Copyright (c) 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+ * Copyright (c) 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,10 +25,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.carousel.CarouselLayoutManager
-import com.google.android.material.carousel.HeroCarouselStrategy
 import org.teslasoft.android.pchips.R
 import org.teslasoft.android.pchips.adapters.ColoredCardAdapter
 

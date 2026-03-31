@@ -1,5 +1,5 @@
 /**************************************************************************
- * Copyright (c) 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+ * Copyright (c) 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
@@ -27,8 +26,8 @@ android {
         applicationId = "org.teslasoft.android.pchips"
         minSdk = 33
         targetSdk = 36
-        versionCode = 14
-        versionName = "1.4"
+        versionCode = 15
+        versionName = "1.5"
     }
 
     buildTypes {
@@ -60,10 +59,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
-    }
-
-    kotlinOptions {
-        jvmTarget = "21"
     }
 }
 

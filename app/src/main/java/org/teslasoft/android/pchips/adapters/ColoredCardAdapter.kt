@@ -1,5 +1,5 @@
 /**************************************************************************
- * Copyright (c) 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+ * Copyright (c) 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,14 @@ package org.teslasoft.android.pchips.adapters
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.RippleDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import org.teslasoft.android.pchips.R
+import androidx.core.graphics.drawable.toDrawable
 
 class ColoredCardAdapter(private val items: ArrayList<Int>, private val context: Context) : RecyclerView.Adapter<ColoredCardAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,10 +41,10 @@ class ColoredCardAdapter(private val items: ArrayList<Int>, private val context:
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var card: LinearLayout = itemView.findViewById(R.id.card)
+        private var card: View = itemView.findViewById(R.id.card)
 
         fun bind(color: Int, context: Context) {
-            val drawable = ColorDrawable(color)
+            val drawable = color.toDrawable()
             val rippleColor = ContextCompat.getColor(context, R.color.ripple)
             val colorStateList = ColorStateList.valueOf(rippleColor)
             val rippleDrawable = RippleDrawable(colorStateList, drawable, null)

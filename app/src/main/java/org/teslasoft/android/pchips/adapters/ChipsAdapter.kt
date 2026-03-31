@@ -1,5 +1,5 @@
 /**************************************************************************
- * Copyright (c) 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+ * Copyright (c) 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,13 @@
 package org.teslasoft.android.pchips.adapters
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import org.teslasoft.android.pchips.R
 import org.teslasoft.android.pchips.util.GraphicUtil
 
@@ -38,19 +38,19 @@ class ChipsAdapter(private val items: ArrayList<Int>, private val names: ArrayLi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (rawColor) {
-            holder.chip.background = GraphicUtil.getBackgroundDrawable(holder.chip.background, items[position])
-            holder.color.textSize = 16f
+            holder.chip.backgroundTintList = ColorStateList.valueOf(items[position])
+            holder.chip.textSize = 16f
         } else {
-            holder.chip.background = GraphicUtil.getBackgroundDrawable(holder.chip.background, ResourcesCompat.getColor(context.resources, items[position], null))
+            holder.chip.backgroundTintList = ColorStateList.valueOf(ResourcesCompat.getColor(context.resources, items[position], null))
         }
 
-        holder.color.text = names[position]
+        holder.chip.text = names[position]
         holder.chip.layoutParams.height = heightOfElementInPx
 
         if (position >= 35 || (rawColor && GraphicUtil.isDarkThemeEnabled(context))) {
-            holder.color.setTextColor(ResourcesCompat.getColor(context.resources, R.color.white, null))
+            holder.chip.setTextColor(ResourcesCompat.getColor(context.resources, R.color.white, null))
         } else {
-            holder.color.setTextColor(ResourcesCompat.getColor(context.resources, R.color.black, null))
+            holder.chip.setTextColor(ResourcesCompat.getColor(context.resources, R.color.black, null))
         }
 
         holder.chip.setOnClickListener {
@@ -62,9 +62,8 @@ class ChipsAdapter(private val items: ArrayList<Int>, private val names: ArrayLi
         return items.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var chip: ConstraintLayout = itemView.findViewById(R.id.chip)
-        var color: TextView = itemView.findViewById(R.id.color)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var chip: MaterialButton = itemView.findViewById(R.id.chip)
     }
 
     fun interface OnClickListener {

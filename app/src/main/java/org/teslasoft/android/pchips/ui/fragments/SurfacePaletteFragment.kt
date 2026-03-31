@@ -1,5 +1,5 @@
 /**************************************************************************
- * Copyright (c) 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+ * Copyright (c) 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,18 +48,18 @@ class SurfacePaletteFragment : Fragment() {
     private var colorCode: TextView? = null
     private var textHint: TextView? = null
     private var view: View? = null
-    private var context: Context? = null
+    private var mContext: Context? = null
     private var isViewInitialized = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        this.context = context
+        this.mContext = context
         initComponents()
     }
 
     override fun onDetach() {
         super.onDetach()
-        this.context = null
+        this.mContext = null
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -69,12 +69,12 @@ class SurfacePaletteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.view = view
-        context = getContext()
+        mContext = context
         initComponents()
     }
 
     private fun initComponents() {
-        if (view == null || context == null) return
+        if (view == null || mContext == null) return
 
         chips = view?.findViewById(R.id.accent_grid)
         selectedColor = view?.findViewById(R.id.selected_color)
@@ -82,52 +82,51 @@ class SurfacePaletteFragment : Fragment() {
         textHint = view?.findViewById(R.id.text_hint)
 
         if (isViewInitialized) {
-            initView(0, 0)
+            initView()
         }
     }
 
-    fun initView(statusBarHeight: Int, navigationBarHeight: Int) {
+    fun initView() {
         isViewInitialized = true
-        if (view == null || context == null) return
+        if (view == null || mContext == null) return
 
         initData()
-        initRecyclerView(statusBarHeight, navigationBarHeight)
+        initRecyclerView()
         updateColor(0)
         initUX()
     }
 
-    private fun initRecyclerView(statusBarHeight: Int, navigationBarHeight: Int) {
-        val heightOfElementInPx = calculateElementHeight(statusBarHeight, navigationBarHeight)
-        adapter = ChipsAdapter(systemColors, names, context ?: return, heightOfElementInPx, true)
+    private fun initRecyclerView() {
+        val heightOfElementInPx = calculateElementHeight()
+        adapter = ChipsAdapter(systemColors, names, mContext ?: return, heightOfElementInPx, true)
         adapter?.setOnClickListener { _, position -> updateColor(position) }
-        chips?.setLayoutManager(GridLayoutManager(context ?: return, 1))
+        chips?.setLayoutManager(GridLayoutManager(mContext ?: return, 1))
         chips?.setAdapter(adapter)
         chips?.isNestedScrollingEnabled = false
     }
 
-    private fun calculateElementHeight(statusBarHeight: Int, navigationBarHeight: Int): Int {
+    private fun calculateElementHeight(): Int {
         val density = resources.displayMetrics.density
-        val heightDensity = GraphicUtil.calculateRenderArea(context ?: return 0, statusBarHeight, navigationBarHeight)
+        val heightDensity = GraphicUtil.calculateRenderArea(mContext ?: return 0)
         val rawHeightOfElement: Int = (heightDensity / 6)
-        val heightOfElement: Int = rawHeightOfElement - 8
-        val heightOfElementInPx: Int = (heightOfElement * density).toInt()
+        val heightOfElementInPx: Int = (rawHeightOfElement * density).toInt()
         return heightOfElementInPx
     }
 
     private fun initData() {
         systemColors = arrayListOf(
-            SurfaceColors.SURFACE_0.getColor(context ?: return),
-            SurfaceColors.SURFACE_1.getColor(context ?: return),
-            SurfaceColors.SURFACE_2.getColor(context ?: return),
-            SurfaceColors.SURFACE_3.getColor(context ?: return),
-            SurfaceColors.SURFACE_4.getColor(context ?: return),
-            SurfaceColors.SURFACE_5.getColor(context ?: return)
+            SurfaceColors.SURFACE_0.getColor(mContext ?: return),
+            SurfaceColors.SURFACE_1.getColor(mContext ?: return),
+            SurfaceColors.SURFACE_2.getColor(mContext ?: return),
+            SurfaceColors.SURFACE_3.getColor(mContext ?: return),
+            SurfaceColors.SURFACE_4.getColor(mContext ?: return),
+            SurfaceColors.SURFACE_5.getColor(mContext ?: return)
         )
     }
 
     private fun initUX() {
         selectedColor?.setOnLongClickListener {
-            val clipboard = (context ?: return@setOnLongClickListener false).getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clipboard = (mContext ?: return@setOnLongClickListener false).getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("Color code", colorCode?.text)
             clipboard.setPrimaryClip(clip)
             true
@@ -139,12 +138,12 @@ class SurfacePaletteFragment : Fragment() {
         selectedColor?.background = GraphicUtil.getBackgroundDrawable(selectedColor?.background!!, systemColors[position])
         colorCode?.text = "#${Integer.toHexString(systemColors[position]).substring(2).uppercase()}"
 
-        if (GraphicUtil.isDarkThemeEnabled(context ?: return)) {
-            colorCode?.setTextColor(resources.getColor(R.color.white, (context ?: return).theme))
-            textHint?.setTextColor(resources.getColor(R.color.white_shadowed, (context ?: return).theme))
+        if (GraphicUtil.isDarkThemeEnabled(mContext ?: return)) {
+            colorCode?.setTextColor(resources.getColor(R.color.white, (mContext ?: return).theme))
+            textHint?.setTextColor(resources.getColor(R.color.white_shadowed, (mContext ?: return).theme))
         } else {
-            colorCode?.setTextColor(resources.getColor(R.color.black, (context ?: return).theme))
-            textHint?.setTextColor(resources.getColor(R.color.black_shadowed, (context ?: return).theme))
+            colorCode?.setTextColor(resources.getColor(R.color.black, (mContext ?: return).theme))
+            textHint?.setTextColor(resources.getColor(R.color.black_shadowed, (mContext ?: return).theme))
         }
     }
 }

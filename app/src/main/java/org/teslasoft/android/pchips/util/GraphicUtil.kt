@@ -1,5 +1,5 @@
 /**************************************************************************
- * Copyright (c) 2024, Dmytro Ostapenko (AndraxDev). All rights reserved.
+ * Copyright (c) 2024-2026, Dmytro Ostapenko (AndraxDev). All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,12 +40,12 @@ class GraphicUtil {
             return drawable
         }
 
-        fun calculateRenderArea(context: Context, statusBarHeight: Int, navigationBarHeight: Int): Int {
+        fun calculateRenderArea(context: Context): Int {
             val rect = Rect()
             (context as Activity).window.decorView.getWindowVisibleDisplayFrame(rect)
             val height = rect.height()
             val density = context.resources.displayMetrics.density
-            val heightDensity: Int = (height / density).toInt() - statusBarHeight - navigationBarHeight - 250
+            val heightDensity: Int = (height / density).toInt() - 250
             return heightDensity
         }
     }

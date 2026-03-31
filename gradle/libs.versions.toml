@@ -1,11 +1,10 @@
 [versions]
-agp = "8.9.0"
-kotlin = "2.0.21"
-coreKtx = "1.15.0"
-appcompat = "1.7.0"
-material = "1.13.0-alpha11"
+agp = "9.1.0"
+coreKtx = "1.18.0"
+appcompat = "1.7.1"
+material = "1.14.0-alpha10"
 customactivityoncrash = "2.4.0"
-window = "1.3.0"
+window = "1.5.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -16,4 +15,3 @@ androidx-window = { group = "androidx.window", name = "window", version.ref = "w
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
