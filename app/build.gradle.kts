@@ -35,6 +35,7 @@ android {
             isMinifyEnabled = false
             isDebuggable = false
             multiDexEnabled = true
+            //noinspection NotShrinkingResources
             isShrinkResources = false
 
             proguardFiles(
@@ -47,6 +48,7 @@ android {
             isMinifyEnabled = false
             isDebuggable = false
             multiDexEnabled = true
+            //noinspection NotShrinkingResources
             isShrinkResources = false
 
             proguardFiles(
