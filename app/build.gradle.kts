@@ -20,12 +20,12 @@ plugins {
 
 android {
     namespace = "org.teslasoft.android.pchips"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "org.teslasoft.android.pchips"
         minSdk = 33
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 15
         versionName = "1.5"
     }
